@@ -38,7 +38,7 @@
     {
       "text": "sc",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 12:40:10 AM",
+      "dateUpdated": "Dec 3, 2017 6:05:50 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -62,18 +62,18 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "\u003cpyspark.context.SparkContext object at 0x7fe7c30585d0\u003e\n"
+        "msg": "\u003cpyspark.context.SparkContext object at 0x7f6e17b2b650\u003e\n"
       },
       "dateCreated": "Nov 28, 2017 10:30:27 PM",
-      "dateStarted": "Dec 3, 2017 12:40:11 AM",
-      "dateFinished": "Dec 3, 2017 12:40:44 AM",
+      "dateStarted": "Dec 3, 2017 6:05:50 AM",
+      "dateFinished": "Dec 3, 2017 6:06:41 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "df \u003d sqlContext.read.format(\u0027com.databricks.spark.csv\u0027) \\\n    .option(\"inferschema\",True) \\\n    .option(\"header\",True) \\\n    .load(\"s3://6330-kaggle/user_logs/logs.csv\")",
+      "text": "df \u003d sqlContext.read.format(\u0027com.databricks.spark.csv\u0027) \\\n    .option(\"inferschema\",True) \\\n    .option(\"header\",True) \\\n    .load(\"s3://6330-kaggle/user_logs/kkbox_train.csv\")",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 12:41:37 AM",
+      "dateUpdated": "Dec 3, 2017 6:23:26 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -100,15 +100,15 @@
         "msg": ""
       },
       "dateCreated": "Nov 28, 2017 10:41:07 PM",
-      "dateStarted": "Dec 3, 2017 12:41:37 AM",
-      "dateFinished": "Dec 3, 2017 12:41:45 AM",
+      "dateStarted": "Dec 3, 2017 6:23:26 AM",
+      "dateFinished": "Dec 3, 2017 6:23:31 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "df.printSchema()",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 12:41:57 AM",
+      "dateUpdated": "Dec 3, 2017 6:23:33 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -132,53 +132,18 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "root\n |-- : integer (nullable \u003d true)\n |-- msno: string (nullable \u003d true)\n |-- date.x: string (nullable \u003d true)\n |-- num_25.x: integer (nullable \u003d true)\n |-- num_50.x: integer (nullable \u003d true)\n |-- num_75.x: integer (nullable \u003d true)\n |-- num_985.x: integer (nullable \u003d true)\n |-- num_100.x: integer (nullable \u003d true)\n |-- num_unq.x: integer (nullable \u003d true)\n |-- total_secs.x: double (nullable \u003d true)\n |-- date.y: string (nullable \u003d true)\n |-- num_25.y: string (nullable \u003d true)\n |-- num_50.y: string (nullable \u003d true)\n |-- num_75.y: string (nullable \u003d true)\n |-- num_985.y: string (nullable \u003d true)\n |-- num_100.y: string (nullable \u003d true)\n |-- num_unq.y: string (nullable \u003d true)\n |-- total_secs.y: string (nullable \u003d true)\n |-- is_churn: integer (nullable \u003d true)\n |-- payment_method_id: integer (nullable \u003d true)\n |-- payment_plan_days: integer (nullable \u003d true)\n |-- plan_list_price: integer (nullable \u003d true)\n |-- actual_amount_paid: integer (nullable \u003d true)\n |-- is_auto_renew: integer (nullable \u003d true)\n |-- transaction_date: string (nullable \u003d true)\n |-- membership_expire_date: string (nullable \u003d true)\n |-- is_cancel: integer (nullable \u003d true)\n\n"
+        "msg": "root\n |-- msno: string (nullable \u003d true)\n |-- payment_method_id: integer (nullable \u003d true)\n |-- payment_plan_days: integer (nullable \u003d true)\n |-- plan_list_price: integer (nullable \u003d true)\n |-- actual_amount_paid: integer (nullable \u003d true)\n |-- is_auto_renew: integer (nullable \u003d true)\n |-- is_cancel: integer (nullable \u003d true)\n |-- num_25: integer (nullable \u003d true)\n |-- num_50: integer (nullable \u003d true)\n |-- num_75: integer (nullable \u003d true)\n |-- num_985: integer (nullable \u003d true)\n |-- num_100: integer (nullable \u003d true)\n |-- num_unq: integer (nullable \u003d true)\n |-- total_secs: double (nullable \u003d true)\n |-- sec_last_num_25: integer (nullable \u003d true)\n |-- sec_last_num_50: integer (nullable \u003d true)\n |-- sec_last_num_75: integer (nullable \u003d true)\n |-- sec_last_num_985: integer (nullable \u003d true)\n |-- sec_last_num_100: integer (nullable \u003d true)\n |-- sec_last_num_unq: integer (nullable \u003d true)\n |-- sec_last_total_secs: integer (nullable \u003d true)\n |-- is_churn: integer (nullable \u003d true)\n\n"
       },
       "dateCreated": "Dec 2, 2017 10:48:05 PM",
-      "dateStarted": "Dec 3, 2017 12:41:57 AM",
-      "dateFinished": "Dec 3, 2017 12:41:57 AM",
+      "dateStarted": "Dec 3, 2017 6:23:33 AM",
+      "dateFinished": "Dec 3, 2017 6:23:33 AM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "df.limit(5).toPandas()",
+      "text": "import pandas as pd\r\nimport numpy as np\r\nfrom sklearn import preprocessing\r\nfrom sklearn.linear_model import LogisticRegression\r\nfrom sklearn.cross_validation import train_test_split",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 12:45:29 AM",
-      "config": {
-        "colWidth": 12.0,
-        "graph": {
-          "mode": "table",
-          "height": 300.0,
-          "optionOpen": false,
-          "keys": [],
-          "values": [],
-          "groups": [],
-          "scatter": {}
-        },
-        "enabled": true,
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "jobName": "paragraph_1512254883469_-577276069",
-      "id": "20171202-224803_276515902",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": "                                                msno      date.x  num_25.x  \\\n0  986  +1luNX1IrJn8MEXXdA9fHWWuCx+j5E5T+O6b7AGGJgk\u003d  25Nov57183         4   \n1  987  +6BehiJV2/Ow8ri7+0VbqqrRpODNl8ZcbotX87whDmQ\u003d  25Nov57183         1   \n2  988  /0qF/fIS5MP0XuP886CdVh13oOg1+gc3C8wqAasGS/I\u003d  24Nov57183         0   \n3  989  /0w2PAPYFo/U+OifQaT9/FmDQQMCsEj9hCDV2SeJVcQ\u003d  24Nov57183         1   \n4  990  /5cGu7xPlyW13t67UyuZy0lSE7dSF5zFgvWMe1q2h54\u003d  24Nov57183         6   \n\n   num_50.x  num_75.x  num_985.x  num_100.x  num_unq.x  total_secs.x  \\\n0         1         4          0         85         43     13975.294   \n1         0         0          0         32          3      6522.251   \n2         0         0          0         49         21     10410.851   \n3         0         0          0         33         34      8797.379   \n4         5         1          1         35         45      8953.055   \n\n     ...     total_secs.y is_churn payment_method_id payment_plan_days  \\\n0    ...         6407.326        0                39                30   \n1    ...         5067.483        0                38                30   \n2    ...         6916.641        0                36                30   \n3    ...        14744.162        0                28                60   \n4    ...        17492.726        1                38               120   \n\n  plan_list_price actual_amount_paid is_auto_renew transaction_date  \\\n0             149                149             1       11Dec57183   \n1             149                149             0       21Feb57184   \n2             180                180             1       15Mar57184   \n3             300                300             0       13Jul57159   \n4             477                477             0       29Dec57158   \n\n   membership_expire_date  is_cancel  \n0              25Jun57184          0  \n1               2Jun57184          0  \n2              23Jun57184          0  \n3               1Mar57184          0  \n4               5Mar57184          0  \n\n[5 rows x 27 columns]\n"
-      },
-      "dateCreated": "Dec 2, 2017 10:48:03 PM",
-      "dateStarted": "Dec 3, 2017 12:45:29 AM",
-      "dateFinished": "Dec 3, 2017 12:45:30 AM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "import pandas as pd\r\nimport numpy as np\r\nfrom sklearn import preprocessing\r\nimport matplotlib.pyplot as plt \r\nplt.rc(\"font\", size\u003d14)\r\nfrom sklearn.linear_model import LogisticRegression\r\nfrom sklearn.cross_validation import train_test_split\r\nimport seaborn as sns",
-      "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 12:46:39 AM",
+      "dateUpdated": "Dec 3, 2017 6:14:57 AM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -200,14 +165,259 @@
       "jobName": "paragraph_1512261795023_1837288127",
       "id": "20171203-004315_884126465",
       "result": {
-        "code": "ERROR",
+        "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7042537221865312525.py\", line 279, in \u003cmodule\u003e\n    raise Exception(traceback.format_exc())\nException: Traceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-7042537221865312525.py\", line 272, in \u003cmodule\u003e\n    exec(code)\n  File \"\u003cstdin\u003e\", line 4, in \u003cmodule\u003e\nImportError: No module named matplotlib.pyplot\n\n"
+        "msg": ""
       },
       "dateCreated": "Dec 3, 2017 12:43:15 AM",
-      "dateStarted": "Dec 3, 2017 12:46:39 AM",
-      "dateFinished": "Dec 3, 2017 12:46:57 AM",
-      "status": "ERROR",
+      "dateStarted": "Dec 3, 2017 6:14:57 AM",
+      "dateFinished": "Dec 3, 2017 6:14:57 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from pyspark.ml.feature import (VectorAssembler,VectorIndexer,OneHotEncoder,StringIndexer)\r\nfrom pyspark.ml.feature import StandardScaler\r\n\r\npayment_indexer \u003d StringIndexer(inputCol\u003d\"payment_method_id\",outputCol\u003d\"payment_indexed\")\r\npayment_encoder \u003d OneHotEncoder(inputCol\u003d\"payment_indexed\",outputCol\u003d\"payment_encoded\")\r\npayment_indexer.fit(df).transform(df)\r\n\r\nscaler \u003d StandardScaler.fit()",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 8:45:39 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512261999685_1412985066",
+      "id": "20171203-004639_1133242092",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 12:46:39 AM",
+      "dateStarted": "Dec 3, 2017 6:15:00 AM",
+      "dateFinished": "Dec 3, 2017 6:15:00 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "assembler \u003d VectorAssembler(inputCols\u003d[\r\n\u0027payment_encoded\u0027\r\n\u0027payment_plan_days\u0027,\r\n\u0027plan_list_price\u0027,\r\n\u0027actual_amount_paid\u0027,\r\n\u0027num_25\u0027,\r\n\u0027num_50\u0027,\r\n\u0027num_75\u0027,\r\n\u0027num_985\u0027,\r\n\u0027num_100\u0027,\r\n\u0027num_unq\u0027,\r\n\u0027total_secs\u0027,\r\n\u0027sec_last_num_25\u0027,\r\n\u0027sec_last_num_50\u0027,\r\n\u0027sec_last_num_75\u0027,\r\n\u0027sec_last_num_985\u0027,\r\n\u0027sec_last_num_100\u0027,\r\n\u0027sec_last_num_unq\u0027,\r\n\u0027sec_last_total_secs\u0027,\r\n],outputCol\u003d\u0027scaled_features\u0027)",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 8:37:09 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512281700208_376205340",
+      "id": "20171203-061500_1800250439",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 6:15:00 AM",
+      "dateStarted": "Dec 3, 2017 6:26:27 AM",
+      "dateFinished": "Dec 3, 2017 6:26:27 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nkkbox_logreg \u003d LogisticRegression(labelCol\u003d\u0027is_churn\u0027)\npipeline \u003d Pipeline(stages\u003d[kkbox_logreg]))",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 8:33:01 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512282387548_-61490600",
+      "id": "20171203-062627_1335849028",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 6:26:27 AM",
+      "dateStarted": "Dec 3, 2017 6:26:50 AM",
+      "dateFinished": "Dec 3, 2017 6:26:50 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "kkbox_logreg \u003d LogisticRegression(labelCol\u003d\u0027is_churn\u0027)\npipeline \u003d Pipeline(stages\u003d[kkbox_logreg]))",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 8:15:51 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512288694287_-1036434519",
+      "id": "20171203-081134_391036539",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 8:11:34 AM",
+      "dateStarted": "Dec 3, 2017 8:13:06 AM",
+      "dateFinished": "Dec 3, 2017 8:13:06 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "train, test \u003d df.randomSplit([0.7,0.3])",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 7:06:55 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512282396896_1189159509",
+      "id": "20171203-062636_176127440",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 6:26:36 AM",
+      "dateStarted": "Dec 3, 2017 7:06:55 AM",
+      "dateFinished": "Dec 3, 2017 7:06:55 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "train.groupBy().avg(\u0027is_churn\u0027).take(1)[0][0]",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 7:18:25 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512284815511_531899473",
+      "id": "20171203-070655_913115106",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "0.06564879662976597\n"
+      },
+      "dateCreated": "Dec 3, 2017 7:06:55 AM",
+      "dateStarted": "Dec 3, 2017 7:18:25 AM",
+      "dateFinished": "Dec 3, 2017 7:18:30 AM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "test.groupBy().avg(\u0027is_churn\u0027).take(1)[0][0]",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 7:18:58 AM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512284828480_-1221401264",
+      "id": "20171203-070708_930105428",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "0.06622534523454245\n"
+      },
+      "dateCreated": "Dec 3, 2017 7:07:08 AM",
+      "dateStarted": "Dec 3, 2017 7:18:58 AM",
+      "dateFinished": "Dec 3, 2017 7:19:03 AM",
+      "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
@@ -216,9 +426,9 @@
         "params": {},
         "forms": {}
       },
-      "jobName": "paragraph_1512261999685_1412985066",
-      "id": "20171203-004639_1133242092",
-      "dateCreated": "Dec 3, 2017 12:46:39 AM",
+      "jobName": "paragraph_1512285538758_11729351",
+      "id": "20171203-071858_177592104",
+      "dateCreated": "Dec 3, 2017 7:18:58 AM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
