@@ -3,7 +3,7 @@
     {
       "text": "%dep\nz.load(\"com.databricks:spark-csv_2.10:1.4.0\")",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 5:59:25 AM",
+      "dateUpdated": "Dec 3, 2017 4:07:04 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -27,11 +27,11 @@
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "DepInterpreter(%dep) deprecated. Load dependency through GUI interpreter menu instead.\nres0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@49c4b705\n"
+        "msg": "DepInterpreter(%dep) deprecated. Load dependency through GUI interpreter menu instead.\nres0: org.apache.zeppelin.dep.Dependency \u003d org.apache.zeppelin.dep.Dependency@11cbcf19\n"
       },
       "dateCreated": "Dec 2, 2017 11:15:47 PM",
-      "dateStarted": "Dec 3, 2017 5:59:25 AM",
-      "dateFinished": "Dec 3, 2017 5:59:36 AM",
+      "dateStarted": "Dec 3, 2017 4:07:04 PM",
+      "dateFinished": "Dec 3, 2017 4:07:17 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -73,7 +73,7 @@
     {
       "text": "df \u003d sqlContext.read.format(\u0027com.databricks.spark.csv\u0027) \\\n    .option(\"inferschema\",True) \\\n    .option(\"header\",True) \\\n    .load(\"s3://6330-kaggle/user_logs/kkbox_train.csv\")",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 6:23:26 AM",
+      "dateUpdated": "Dec 3, 2017 4:12:13 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -92,6 +92,19 @@
         "params": {},
         "forms": {}
       },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d0",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d1"
+          ],
+          "interpreterSettingId": "2D1FRURM9429941511908224474"
+        }
+      },
       "jobName": "paragraph_1511908867237_-1240157729",
       "id": "20171128-224107_130422433",
       "result": {
@@ -100,15 +113,15 @@
         "msg": ""
       },
       "dateCreated": "Nov 28, 2017 10:41:07 PM",
-      "dateStarted": "Dec 3, 2017 6:23:26 AM",
-      "dateFinished": "Dec 3, 2017 6:23:31 AM",
+      "dateStarted": "Dec 3, 2017 4:12:13 PM",
+      "dateFinished": "Dec 3, 2017 4:13:23 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "df.printSchema()",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 6:23:33 AM",
+      "dateUpdated": "Dec 3, 2017 4:12:20 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -135,15 +148,50 @@
         "msg": "root\n |-- msno: string (nullable \u003d true)\n |-- payment_method_id: integer (nullable \u003d true)\n |-- payment_plan_days: integer (nullable \u003d true)\n |-- plan_list_price: integer (nullable \u003d true)\n |-- actual_amount_paid: integer (nullable \u003d true)\n |-- is_auto_renew: integer (nullable \u003d true)\n |-- is_cancel: integer (nullable \u003d true)\n |-- num_25: integer (nullable \u003d true)\n |-- num_50: integer (nullable \u003d true)\n |-- num_75: integer (nullable \u003d true)\n |-- num_985: integer (nullable \u003d true)\n |-- num_100: integer (nullable \u003d true)\n |-- num_unq: integer (nullable \u003d true)\n |-- total_secs: double (nullable \u003d true)\n |-- sec_last_num_25: integer (nullable \u003d true)\n |-- sec_last_num_50: integer (nullable \u003d true)\n |-- sec_last_num_75: integer (nullable \u003d true)\n |-- sec_last_num_985: integer (nullable \u003d true)\n |-- sec_last_num_100: integer (nullable \u003d true)\n |-- sec_last_num_unq: integer (nullable \u003d true)\n |-- sec_last_total_secs: integer (nullable \u003d true)\n |-- is_churn: integer (nullable \u003d true)\n\n"
       },
       "dateCreated": "Dec 2, 2017 10:48:05 PM",
-      "dateStarted": "Dec 3, 2017 6:23:33 AM",
-      "dateFinished": "Dec 3, 2017 6:23:33 AM",
+      "dateStarted": "Dec 3, 2017 4:12:20 PM",
+      "dateFinished": "Dec 3, 2017 4:13:23 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "df \u003d df.select(df.payment_method_id.cast(\"double\"),\r\ndf.payment_plan_days.cast(\"double\"),\r\ndf.plan_list_price.cast(\"double\"),\r\ndf.actual_amount_paid.cast(\"double\"),\r\ndf.is_auto_renew.cast(\"double\"),\r\ndf.is_cancel.cast(\"double\"),\r\ndf.num_25.cast(\"double\"),\r\ndf.num_50.cast(\"double\"),\r\ndf.num_75.cast(\"double\"),\r\ndf.num_985.cast(\"double\"),\r\ndf.num_100.cast(\"double\"),\r\ndf.num_unq.cast(\"double\"),\r\ndf.total_secs.cast(\"double\"),\r\ndf.sec_last_num_25.cast(\"double\"),\r\ndf.sec_last_num_50.cast(\"double\"),\r\ndf.sec_last_num_75.cast(\"double\"),\r\ndf.sec_last_num_985.cast(\"double\"),\r\ndf.sec_last_num_100.cast(\"double\"),\r\ndf.sec_last_num_unq.cast(\"double\"),\r\ndf.sec_last_total_secs.cast(\"double\"),\r\ndf.is_churn.cast(\"double\"))\r\n\r\n",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 6:25:11 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512325162730_93062598",
+      "id": "20171203-181922_428200289",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 6:19:22 PM",
+      "dateStarted": "Dec 3, 2017 6:25:11 PM",
+      "dateFinished": "Dec 3, 2017 6:25:11 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "import pandas as pd\r\nimport numpy as np\r\nfrom sklearn import preprocessing\r\nfrom sklearn.linear_model import LogisticRegression\r\nfrom sklearn.cross_validation import train_test_split",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 6:14:57 AM",
+      "dateUpdated": "Dec 3, 2017 6:25:15 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -170,15 +218,15 @@
         "msg": ""
       },
       "dateCreated": "Dec 3, 2017 12:43:15 AM",
-      "dateStarted": "Dec 3, 2017 6:14:57 AM",
-      "dateFinished": "Dec 3, 2017 6:14:57 AM",
+      "dateStarted": "Dec 3, 2017 6:25:15 PM",
+      "dateFinished": "Dec 3, 2017 6:25:15 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "from pyspark.ml.feature import (VectorAssembler,VectorIndexer,OneHotEncoder,StringIndexer)\r\nfrom pyspark.ml.feature import StandardScaler\r\n\r\npayment_indexer \u003d StringIndexer(inputCol\u003d\"payment_method_id\",outputCol\u003d\"payment_indexed\")\r\npayment_encoder \u003d OneHotEncoder(inputCol\u003d\"payment_indexed\",outputCol\u003d\"payment_encoded\")\r\npayment_indexer.fit(df).transform(df)\r\n\r\nscaler \u003d StandardScaler.fit()",
+      "text": "from pyspark.ml.feature import (VectorAssembler,VectorIndexer,OneHotEncoder,StringIndexer)\r\nfrom pyspark.ml.feature import StandardScaler\r\n\r\npayment_indexer \u003d StringIndexer(inputCol\u003d\"payment_method_id\",outputCol\u003d\"payment_indexed\")\r\npayment_indexed \u003d payment_indexer.fit(df).transform(df)\r\n\r\npayment_encoder \u003d OneHotEncoder(inputCol\u003d\"payment_indexed\",outputCol\u003d\"payment_encoded\")\r\nencoded \u003d payment_encoder.transform(payment_indexed)\r\n",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 8:45:39 AM",
+      "dateUpdated": "Dec 3, 2017 6:25:18 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -197,6 +245,18 @@
         "params": {},
         "forms": {}
       },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d15"
+          ],
+          "interpreterSettingId": "2D1FRURM9429941511908224474"
+        }
+      },
       "jobName": "paragraph_1512261999685_1412985066",
       "id": "20171203-004639_1133242092",
       "result": {
@@ -205,15 +265,15 @@
         "msg": ""
       },
       "dateCreated": "Dec 3, 2017 12:46:39 AM",
-      "dateStarted": "Dec 3, 2017 6:15:00 AM",
-      "dateFinished": "Dec 3, 2017 6:15:00 AM",
+      "dateStarted": "Dec 3, 2017 6:25:18 PM",
+      "dateFinished": "Dec 3, 2017 6:25:23 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "assembler \u003d VectorAssembler(inputCols\u003d[\r\n\u0027payment_encoded\u0027\r\n\u0027payment_plan_days\u0027,\r\n\u0027plan_list_price\u0027,\r\n\u0027actual_amount_paid\u0027,\r\n\u0027num_25\u0027,\r\n\u0027num_50\u0027,\r\n\u0027num_75\u0027,\r\n\u0027num_985\u0027,\r\n\u0027num_100\u0027,\r\n\u0027num_unq\u0027,\r\n\u0027total_secs\u0027,\r\n\u0027sec_last_num_25\u0027,\r\n\u0027sec_last_num_50\u0027,\r\n\u0027sec_last_num_75\u0027,\r\n\u0027sec_last_num_985\u0027,\r\n\u0027sec_last_num_100\u0027,\r\n\u0027sec_last_num_unq\u0027,\r\n\u0027sec_last_total_secs\u0027,\r\n],outputCol\u003d\u0027scaled_features\u0027)",
+      "text": "assembler \u003d VectorAssembler(inputCols\u003d[\r\n\u0027payment_encoded\u0027,\r\n\u0027payment_plan_days\u0027,\r\n\u0027plan_list_price\u0027,\r\n\u0027actual_amount_paid\u0027,\r\n\u0027is_auto_renew\u0027,\r\n\u0027is_cancel\u0027,\r\n\u0027num_25\u0027,\r\n\u0027num_50\u0027,\r\n\u0027num_75\u0027,\r\n\u0027num_985\u0027,\r\n\u0027num_100\u0027,\r\n\u0027num_unq\u0027,\r\n\u0027total_secs\u0027,\r\n\u0027sec_last_num_25\u0027,\r\n\u0027sec_last_num_50\u0027,\r\n\u0027sec_last_num_75\u0027,\r\n\u0027sec_last_num_985\u0027,\r\n\u0027sec_last_num_100\u0027,\r\n\u0027sec_last_num_unq\u0027,\r\n\u0027sec_last_total_secs\u0027\r\n],outputCol\u003d\u0027features\u0027)",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 8:37:09 AM",
+      "dateUpdated": "Dec 3, 2017 6:23:32 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -240,15 +300,15 @@
         "msg": ""
       },
       "dateCreated": "Dec 3, 2017 6:15:00 AM",
-      "dateStarted": "Dec 3, 2017 6:26:27 AM",
-      "dateFinished": "Dec 3, 2017 6:26:27 AM",
+      "dateStarted": "Dec 3, 2017 6:23:32 PM",
+      "dateFinished": "Dec 3, 2017 6:23:33 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "from pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nkkbox_logreg \u003d LogisticRegression(labelCol\u003d\u0027is_churn\u0027)\npipeline \u003d Pipeline(stages\u003d[kkbox_logreg]))",
+      "text": "from pyspark.ml.classification import LogisticRegression\nfrom pyspark.ml import Pipeline\n\nkkbox_logreg \u003d LogisticRegression(labelCol\u003d\u0027is_churn\u0027)\npipeline \u003d Pipeline(stages\u003d[assembler,kkbox_logreg])",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 8:33:01 AM",
+      "dateUpdated": "Dec 3, 2017 6:25:26 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -275,50 +335,15 @@
         "msg": ""
       },
       "dateCreated": "Dec 3, 2017 6:26:27 AM",
-      "dateStarted": "Dec 3, 2017 6:26:50 AM",
-      "dateFinished": "Dec 3, 2017 6:26:50 AM",
+      "dateStarted": "Dec 3, 2017 6:25:26 PM",
+      "dateFinished": "Dec 3, 2017 6:25:26 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
-      "text": "kkbox_logreg \u003d LogisticRegression(labelCol\u003d\u0027is_churn\u0027)\npipeline \u003d Pipeline(stages\u003d[kkbox_logreg]))",
+      "text": "train, test \u003d encoded.randomSplit([0.7,0.3])",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 8:15:51 AM",
-      "config": {
-        "colWidth": 12.0,
-        "graph": {
-          "mode": "table",
-          "height": 300.0,
-          "optionOpen": false,
-          "keys": [],
-          "values": [],
-          "groups": [],
-          "scatter": {}
-        },
-        "enabled": true,
-        "editorMode": "ace/mode/scala"
-      },
-      "settings": {
-        "params": {},
-        "forms": {}
-      },
-      "jobName": "paragraph_1512288694287_-1036434519",
-      "id": "20171203-081134_391036539",
-      "result": {
-        "code": "SUCCESS",
-        "type": "TEXT",
-        "msg": ""
-      },
-      "dateCreated": "Dec 3, 2017 8:11:34 AM",
-      "dateStarted": "Dec 3, 2017 8:13:06 AM",
-      "dateFinished": "Dec 3, 2017 8:13:06 AM",
-      "status": "FINISHED",
-      "progressUpdateIntervalMs": 500
-    },
-    {
-      "text": "train, test \u003d df.randomSplit([0.7,0.3])",
-      "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 7:06:55 AM",
+      "dateUpdated": "Dec 3, 2017 6:25:28 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -345,15 +370,15 @@
         "msg": ""
       },
       "dateCreated": "Dec 3, 2017 6:26:36 AM",
-      "dateStarted": "Dec 3, 2017 7:06:55 AM",
-      "dateFinished": "Dec 3, 2017 7:06:55 AM",
+      "dateStarted": "Dec 3, 2017 6:25:28 PM",
+      "dateFinished": "Dec 3, 2017 6:25:28 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "train.groupBy().avg(\u0027is_churn\u0027).take(1)[0][0]",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 7:18:25 AM",
+      "dateUpdated": "Dec 3, 2017 6:25:30 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -371,24 +396,36 @@
       "settings": {
         "params": {},
         "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d16"
+          ],
+          "interpreterSettingId": "2D1FRURM9429941511908224474"
+        }
       },
       "jobName": "paragraph_1512284815511_531899473",
       "id": "20171203-070655_913115106",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "0.06564879662976597\n"
+        "msg": "0.06559313221450534\n"
       },
       "dateCreated": "Dec 3, 2017 7:06:55 AM",
-      "dateStarted": "Dec 3, 2017 7:18:25 AM",
-      "dateFinished": "Dec 3, 2017 7:18:30 AM",
+      "dateStarted": "Dec 3, 2017 6:25:30 PM",
+      "dateFinished": "Dec 3, 2017 6:25:38 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
     {
       "text": "test.groupBy().avg(\u0027is_churn\u0027).take(1)[0][0]",
       "user": "tsai0020@umn.edu",
-      "dateUpdated": "Dec 3, 2017 7:18:58 AM",
+      "dateUpdated": "Dec 3, 2017 6:25:32 PM",
       "config": {
         "colWidth": 12.0,
         "graph": {
@@ -407,16 +444,184 @@
         "params": {},
         "forms": {}
       },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d17"
+          ],
+          "interpreterSettingId": "2D1FRURM9429941511908224474"
+        }
+      },
       "jobName": "paragraph_1512284828480_-1221401264",
       "id": "20171203-070708_930105428",
       "result": {
         "code": "SUCCESS",
         "type": "TEXT",
-        "msg": "0.06622534523454245\n"
+        "msg": "0.06635528508856932\n"
       },
       "dateCreated": "Dec 3, 2017 7:07:08 AM",
-      "dateStarted": "Dec 3, 2017 7:18:58 AM",
-      "dateFinished": "Dec 3, 2017 7:19:03 AM",
+      "dateStarted": "Dec 3, 2017 6:25:32 PM",
+      "dateFinished": "Dec 3, 2017 6:25:46 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "fit_model \u003d pipeline.fit(train)",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 6:27:20 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d18",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d19",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d20",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d21",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d22",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d23",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d24",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d25",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d26",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d27",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d28",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d29",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d30",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d31",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d32",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d33",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d34",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d35",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d36",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d37",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d38",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d39",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d40",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d41",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d42"
+          ],
+          "interpreterSettingId": "2D1FRURM9429941511908224474"
+        }
+      },
+      "jobName": "paragraph_1512285538758_11729351",
+      "id": "20171203-071858_177592104",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": ""
+      },
+      "dateCreated": "Dec 3, 2017 7:18:58 AM",
+      "dateStarted": "Dec 3, 2017 6:25:41 PM",
+      "dateFinished": "Dec 3, 2017 6:26:07 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "test_results \u003d fit_model.transform(test)",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 6:27:12 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "jobName": "paragraph_1512322576122_-666323340",
+      "id": "20171203-173616_72574255",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "/usr/lib/spark/python/pyspark/ml/classification.py:207: UserWarning: weights is deprecated. Use coefficients instead.\n  warnings.warn(\"weights is deprecated. Use coefficients instead.\")\n"
+      },
+      "dateCreated": "Dec 3, 2017 5:36:16 PM",
+      "dateStarted": "Dec 3, 2017 6:27:12 PM",
+      "dateFinished": "Dec 3, 2017 6:27:12 PM",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "from pyspark.ml.evaluation import BinaryClassificationEvaluator\nchurned\u003dBinaryClassificationEvaluator(rawPredictionCol\u003d\u0027rawPrediction\u0027,labelCol\u003d\u0027is_churn\u0027)\nauc \u003d churned.evaluate(test_results)\nauc",
+      "user": "tsai0020@umn.edu",
+      "dateUpdated": "Dec 3, 2017 6:28:38 PM",
+      "config": {
+        "colWidth": 12.0,
+        "graph": {
+          "mode": "table",
+          "height": 300.0,
+          "optionOpen": false,
+          "keys": [],
+          "values": [],
+          "groups": [],
+          "scatter": {}
+        },
+        "enabled": true,
+        "editorMode": "ace/mode/scala"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "JOB UI",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d43",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d44",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d45",
+            "https://api.qubole.com/cluster-proxy?encodedUrl\u003dhttp%3A%2F%2Fec2-54-173-9-205.compute-1.amazonaws.com%3A8088%2Fproxy%2Fapplication_1512317163975_0001/jobs/job?spark\u003dtrue\u0026id\u003d46"
+          ],
+          "interpreterSettingId": "2D1FRURM9429941511908224474"
+        }
+      },
+      "jobName": "paragraph_1512325632756_194097196",
+      "id": "20171203-182712_123718239",
+      "result": {
+        "code": "SUCCESS",
+        "type": "TEXT",
+        "msg": "0.7895921110265448\n"
+      },
+      "dateCreated": "Dec 3, 2017 6:27:12 PM",
+      "dateStarted": "Dec 3, 2017 6:28:38 PM",
+      "dateFinished": "Dec 3, 2017 6:28:55 PM",
       "status": "FINISHED",
       "progressUpdateIntervalMs": 500
     },
@@ -426,9 +631,9 @@
         "params": {},
         "forms": {}
       },
-      "jobName": "paragraph_1512285538758_11729351",
-      "id": "20171203-071858_177592104",
-      "dateCreated": "Dec 3, 2017 7:18:58 AM",
+      "jobName": "paragraph_1512325707497_380239043",
+      "id": "20171203-182827_898453554",
+      "dateCreated": "Dec 3, 2017 6:28:27 PM",
       "status": "READY",
       "progressUpdateIntervalMs": 500
     }
