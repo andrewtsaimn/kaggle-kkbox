@@ -7,7 +7,7 @@ module load R/3.4.0
 # module load intel
 # module load ompi/intel
 
-Rscript kkbox.R
+Rscript caret_model.R
 
 # to submit job, qsub -q queuename scriptname
 # queues: www.msi.umn.edu/queues
